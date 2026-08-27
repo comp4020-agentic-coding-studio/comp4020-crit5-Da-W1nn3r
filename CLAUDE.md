@@ -1,8 +1,8 @@
 # COMP4020 prototype
 
-Your starter repo for a COMP4020 prototype: a static site in HTML/CSS/TypeScript
-that builds to plain HTML/CSS/JS and deploys to GitHub Pages. The deployed site
-is what gets marked, not this repo.
+Your starter repo for a COMP4020 prototype: a bare static site, hand-written
+HTML/CSS/JS with no bundler or type checker, deployed to GitHub Pages. The
+deployed site is what gets marked, not this repo.
 
 The
 [course website](https://comp.anu.edu.au/courses/comp4020-agentic-coding-studio/)
