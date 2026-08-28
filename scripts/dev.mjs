@@ -18,6 +18,8 @@ const TYPES = {
   ".png": "image/png",
   ".jpg": "image/jpeg",
   ".ico": "image/x-icon",
+  ".mp3": "audio/mpeg",
+  ".m4a": "audio/mp4",
 };
 
 createServer(async (req, res) => {

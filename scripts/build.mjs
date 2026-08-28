@@ -10,6 +10,7 @@ const EXCLUDE = new Set([
   ".githooks",
   "node_modules",
   "dist",
+  "dev",
   "spec",
   "scripts",
   "reflections",

@@ -3,36 +3,119 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>COMP4020 prototype</title>
+    <title>Get To Work</title>
     <meta
       name="description"
-      content="Replace this with one sentence saying what this page is. A search result and a link preview both show it."
+      content="Get To Work: a QWOP-like ragdoll stumble to the office. Rotate your limbs with W I S K D L A J and don't hit your head."
     />
 
-    <!--
-      The link-preview card: public/card.png, 1200x630 --- replace it. The URL
-      resolves against this page, like any link. No og:title/og:description:
-      scrapers fall back to the <title> and description above.
-    -->
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="./card.png" />
+    <meta property="og:image" content="./public/card.png" />
     <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <header>
-      <nav aria-label="Primary">
-        <a href="./">Home</a>
-      </nav>
+      <nav aria-label="Primary"></nav>
     </header>
     <main>
-      <h1>COMP4020 prototype</h1>
-      <p>
-        Replace this with your prototype. This week's brief is on the course website;
-        <code>spec/README.md</code> explains how the checks in this repo relate to it.
-      </p>
+      <h1 class="visually-hidden">Get To Work</h1>
+
+      <canvas id="game-canvas"></canvas>
+
+      <button type="button" id="mute-button" class="mute-button" aria-pressed="false" aria-label="Mute music">🔊</button>
+
+      <section id="menu-screen" class="screen">
+        <img src="./assets/scene/title.png" alt="Get To Work" class="title-image" />
+
+        <div id="best-times" class="best-times">
+          <p>Best time (Normal): <span id="best-time-normal">—</span></p>
+          <p>Best time (I don't need Insurance): <span id="best-time-hardcore">—</span></p>
+        </div>
+
+        <canvas id="character-preview" width="140" height="180" aria-label="Preview of your customized character"></canvas>
+
+        <fieldset>
+          <legend>Head</legend>
+          <div id="head-options" class="swatch-row"></div>
+        </fieldset>
+        <fieldset>
+          <legend>Shirt</legend>
+          <div id="shirt-options" class="swatch-row"></div>
+        </fieldset>
+        <fieldset>
+          <legend>Pants</legend>
+          <div id="pants-options" class="swatch-row"></div>
+        </fieldset>
+        <fieldset>
+          <legend>Shoes</legend>
+          <div id="shoes-options" class="swatch-row"></div>
+        </fieldset>
+        <fieldset>
+          <legend>Hands</legend>
+          <div id="hands-options" class="swatch-row"></div>
+        </fieldset>
+
+        <label class="hardcore-label">
+          <input type="checkbox" id="hardcore-toggle" />
+          I don't need Insurance
+        </label>
+
+        <button type="button" id="start-button">Start</button>
+      </section>
+
+      <section id="hud" class="hud" hidden>
+        <span id="hud-timer">0.0s</span>
+        <span id="hud-deaths">Deaths: 0</span>
+      </section>
+
+      <section id="pause-screen" class="screen" hidden>
+        <h2>Paused</h2>
+        <button type="button" id="resume-button">Resume</button>
+        <button type="button" id="restart-button">Restart</button>
+        <button type="button" id="quit-button">Quit to Menu</button>
+      </section>
+
+      <section id="death-screen" class="screen" hidden>
+        <img src="./assets/scene/medical_bill_death.png" alt="A medical bill arrives for the ambulance ride" />
+        <p>You did not make it to Work.</p>
+        <p>Press any key to continue</p>
+      </section>
+
+      <section id="win-screen" class="screen" hidden>
+        <img id="win-image" src="./assets/scene/angry_boss_end.png" alt="Your angry boss, glaring at you for being late" />
+        <p id="win-message">You're late. Fired.</p>
+        <p id="win-stats"></p>
+        <p id="win-prompt">Press any key to return to the menu</p>
+      </section>
+
+      <section id="credits-screen" class="screen" hidden>
+        <h2>Get To Work</h2>
+        <div class="credits-viewport">
+          <div class="credits-roll">
+            <p>You made it to work on time.</p>
+            <p>&nbsp;</p>
+            <p><strong>Level Design &amp; Game Design</strong></p>
+            <p>Da_W1nn3r</p>
+            <p>&nbsp;</p>
+            <p><strong>Development</strong></p>
+            <p>Built for COMP4020 — Agentic Coding Studio</p>
+            <p>&nbsp;</p>
+            <p><strong>Physics</strong></p>
+            <p>Matter.js</p>
+            <p>&nbsp;</p>
+            <p><strong>Music</strong></p>
+            <p>Kevin MacLeod</p>
+            <p>Overworld · Pixelland · The Builder · Latin Industries · Digital Lemonade</p>
+            <p>&nbsp;</p>
+            <p>Thanks for playing.</p>
+          </div>
+        </div>
+        <p>Press any key to return to the menu</p>
+      </section>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/matter-js@0.20.0/build/matter.min.js"></script>
     <script type="module" src="./main.js"></script>
   </body>
 </html>

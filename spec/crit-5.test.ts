@@ -12,6 +12,9 @@ import { outcomeOf } from "../main.js";
 
 describe("crit 5: one rule ends the round", () => {
   it("a losing move produces a losing outcome", () => {
-    expect(outcomeOf(/* a state that should lose */)).toBe("lost");
+    // Any part of the player's body has touched a hazard (or the ground) —
+    // an instant, unrecoverable loss, whatever else is true of the rest of
+    // the state.
+    expect(outcomeOf({ bodyHit: true, reachedWork: false })).toBe("lost");
   });
 });
