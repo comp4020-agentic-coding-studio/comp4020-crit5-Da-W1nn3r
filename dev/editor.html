@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Level Editor &amp; Object Maker (dev)</title>
+    <link rel="stylesheet" href="./editor.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Level Editor &amp; Object Maker</h1>
+      <nav aria-label="Mode">
+        <button type="button" id="tab-object" class="tab-button" aria-pressed="true">Object Maker</button>
+        <button type="button" id="tab-level" class="tab-button" aria-pressed="false">Level Editor</button>
+      </nav>
+      <p class="hint">Dev-only tool, excluded from the build — see game_design.md §10.</p>
+    </header>
+
+    <main>
+      <section id="object-maker" class="panel">
+        <div class="toolbar">
+          <label>Image <input type="file" id="object-image-input" accept="image/*" /></label>
+          <label>Name <input type="text" id="object-name-input" value="untitled-object" /></label>
+          <label>Sprite path <input type="text" id="object-sprite-input" placeholder="assets/objects/your-file.png" /></label>
+        </div>
+        <div class="workspace">
+          <div class="canvas-scroll">
+            <canvas id="object-canvas" width="1" height="1"></canvas>
+          </div>
+          <div class="side-panel">
+            <fieldset>
+              <legend>Hitbox (polygon)</legend>
+              <p class="hint">
+                Click empty space to start a new shape, click to add points, hold <kbd>Shift</kbd> to snap the angle.
+                Click the first point (green) or press <kbd>Enter</kbd> to close it, <kbd>Backspace</kbd> undoes the
+                last point, <kbd>Escape</kbd> cancels. Once closed: drag a point to move it (<kbd>Shift</kbd> snaps),
+                double-click an edge to add a point, <kbd>Alt</kbd>+click a point to delete it, drag inside the shape
+                to move it all, drag the handle above it to rotate (<kbd>Shift</kbd> snaps).
+              </p>
+              <button type="button" id="object-draw-hitbox-button">Draw new hitbox</button>
+              <button type="button" id="object-reset-hitbox-button">Reset to rectangle</button>
+              <label>X <input type="number" id="object-x" /></label>
+              <label>Y <input type="number" id="object-y" /></label>
+              <label>Width <input type="number" id="object-width" /></label>
+              <label>Height <input type="number" id="object-height" /></label>
+              <label>Rotation (deg) <input type="number" id="object-rotation" /></label>
+            </fieldset>
+            <fieldset>
+              <legend>Flags</legend>
+              <label><input type="checkbox" id="object-flag-hitbox" /> hitbox</label>
+              <label><input type="checkbox" id="object-flag-instantDamage" /> instantDamage</label>
+              <label><input type="checkbox" id="object-flag-physics" /> physics</label>
+              <label><input type="checkbox" id="object-flag-physicsWithEvent" /> physicsWithEvent</label>
+            </fieldset>
+            <button type="button" id="object-save-button">Save object</button>
+            <p id="object-status" class="status" role="status"></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="level-editor" class="panel" hidden>
+        <div class="toolbar">
+          <button type="button" id="level-new-button">New level</button>
+          <label>Load <input type="file" id="level-load-input" accept="application/json" /></label>
+          <button type="button" id="level-save-button">Save level</button>
+          <label>Import objects <input type="file" id="objects-load-input" accept="application/json" multiple /></label>
+          <p id="level-status" class="status" role="status"></p>
+        </div>
+        <div class="workspace">
+          <div>
+            <fieldset class="level-meta">
+              <legend>Level</legend>
+              <label>Id <input type="text" id="level-id" /></label>
+              <label>Name <input type="text" id="level-name" /></label>
+              <label>Min X <input type="number" id="level-min-x" /></label>
+              <label>Max X <input type="number" id="level-max-x" /></label>
+              <label>Ground Y <input type="number" id="level-ground-y" /></label>
+              <button type="button" id="level-add-checkpoint">Add checkpoint</button>
+            </fieldset>
+            <div class="canvas-scroll">
+              <canvas id="level-canvas" width="960" height="540"></canvas>
+            </div>
+            <p class="hint">
+              Drag empty canvas (or scroll) to pan. Click a palette object then click the canvas to place it. Click
+              anything placed to select, edit or drag it.
+            </p>
+          </div>
+          <div class="side-panel">
+            <fieldset>
+              <legend>Palette</legend>
+              <div id="palette-list" class="palette-list"></div>
+            </fieldset>
+            <fieldset id="inspector">
+              <legend>Selection</legend>
+              <div id="inspector-body"><p id="inspector-empty">Nothing selected.</p></div>
+            </fieldset>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./editor.js"></script>
+  </body>
+</html>

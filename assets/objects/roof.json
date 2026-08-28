@@ -1,0 +1,31 @@
+{
+  "name": "untitled-object",
+  "sprite": "assets/objects/roof.png",
+  "width": 1134,
+  "height": 688,
+  "rotation": 0,
+  "flags": {
+    "hitbox": false,
+    "instantDamage": false,
+    "physics": false,
+    "physicsWithEvent": false
+  },
+  "hitboxPolygon": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 1134,
+      "y": 0
+    },
+    {
+      "x": 1134,
+      "y": 688
+    },
+    {
+      "x": 0,
+      "y": 688
+    }
+  ]
+}

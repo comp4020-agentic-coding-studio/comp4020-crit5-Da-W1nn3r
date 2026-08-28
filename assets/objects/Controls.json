@@ -1,0 +1,31 @@
+{
+  "name": "Controls",
+  "sprite": "assets/objects/control_picture.png",
+  "width": 895,
+  "height": 603,
+  "rotation": 0,
+  "flags": {
+    "hitbox": false,
+    "instantDamage": false,
+    "physics": false,
+    "physicsWithEvent": false
+  },
+  "hitboxPolygon": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 895,
+      "y": 0
+    },
+    {
+      "x": 895,
+      "y": 603
+    },
+    {
+      "x": 0,
+      "y": 603
+    }
+  ]
+}

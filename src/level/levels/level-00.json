@@ -1,0 +1,23 @@
+{
+  "id": "level-00-barebones",
+  "name": "Barebones Test Level",
+  "bounds": { "minX": 0, "maxX": 3000 },
+  "groundY": 500,
+  "start": { "x": 100, "y": 500 },
+  "checkpoints": [{ "id": "cp-1", "x": 1500, "y": 500 }],
+  "end": { "x": 2900, "y": 500, "width": 100, "height": 300 },
+  "objects": [
+    {
+      "id": "dummy-hazard-1",
+      "sprite": "assets/objects/ambulance.png",
+      "x": 1000,
+      "y": 440,
+      "width": 60,
+      "height": 60,
+      "rotation": 0,
+      "zIndex": 1,
+      "flags": { "hitbox": true, "instantDamage": true, "physics": false, "physicsWithEvent": false },
+      "trigger": null
+    }
+  ]
+}

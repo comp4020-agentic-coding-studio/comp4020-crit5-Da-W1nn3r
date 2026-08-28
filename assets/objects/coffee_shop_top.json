@@ -1,0 +1,31 @@
+{
+  "name": "untitled-object",
+  "sprite": "assets/objects/coffee_shop_top.png",
+  "width": 1147,
+  "height": 159,
+  "rotation": 0,
+  "flags": {
+    "hitbox": false,
+    "instantDamage": false,
+    "physics": true,
+    "physicsWithEvent": false
+  },
+  "hitboxPolygon": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 1147,
+      "y": 0
+    },
+    {
+      "x": 1147,
+      "y": 159
+    },
+    {
+      "x": 0,
+      "y": 159
+    }
+  ]
+}
