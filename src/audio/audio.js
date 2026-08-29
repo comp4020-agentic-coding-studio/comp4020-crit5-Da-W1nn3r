@@ -13,6 +13,7 @@ const HURT_VARIANTS = [
 ];
 const FIRED_VARIANTS = ["fired_00.m4a", "fired_01.m4a"];
 const AMBULANCE_SOUND = "ambulance.mp3";
+const ON_TIME_SOUND = "on_time.m4a";
 
 function pickVariant(variants) {
   return variants[Math.floor(Math.random() * variants.length)];
@@ -33,9 +34,14 @@ export function playAmbulanceSound() {
   playClip(AMBULANCE_SOUND);
 }
 
-// "You're Fired" — the win/end screen.
+// "You're Fired" — the win/end screen, late variant.
 export function playFiredSound() {
   playClip(pickVariant(FIRED_VARIANTS));
+}
+
+// "Now Get to Work!" — the win/end screen, on-time variant.
+export function playOnTimeSound() {
+  playClip(ON_TIME_SOUND);
 }
 
 // Level objects can reserve a `trigger.sound` field (game_design.md §8/§11),

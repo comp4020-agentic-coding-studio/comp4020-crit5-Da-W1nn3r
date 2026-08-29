@@ -39,7 +39,7 @@ import { setupWinScreen } from "./src/ui/win-screen.js";
 import { setupCreditsScreen } from "./src/ui/credits-screen.js";
 import { setupPauseScreen } from "./src/ui/pause-screen.js";
 import { setupMuteButton } from "./src/ui/mute-button.js";
-import { playAmbulanceSound, playFiredSound, playHurtSound, playTriggerSound } from "./src/audio/audio.js";
+import { playAmbulanceSound, playFiredSound, playHurtSound, playOnTimeSound, playTriggerSound } from "./src/audio/audio.js";
 import { isMusicMuted, pauseMusic, resumeMusic, startMusic, stopMusic, toggleMusicMuted } from "./src/audio/music.js";
 import { recordTime } from "./src/state/best-times.js";
 
@@ -370,7 +370,7 @@ async function start() {
         onTimeEnding = session.elapsedTime <= WIN_ON_TIME_SECONDS;
         recordTime(session.mode, session.elapsedTime);
         winScreen.show(session.elapsedTime, session.deathCount, onTimeEnding);
-        if (!onTimeEnding) playFiredSound();
+        if (onTimeEnding) playOnTimeSound(); else playFiredSound();
         stopMusic();
       },
       onExit() {

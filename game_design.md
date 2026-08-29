@@ -619,9 +619,10 @@ random each time so repeated deaths don't all sound identical:
   ambulance sound, at `DEAD_AMBULANCE.onEnter`.
 - **Ambulance** (`playAmbulanceSound`, single clip) — same moment, the
   ambulance dropping in for the death sequence.
-- **Fired** (`playFiredSound`, 2 variants) — `WON.onEnter`, only for the late
-  ("You're Fired") variant; the on-time ("Now Get to Work!") ending plays no
-  SFX, see §6.
+- **Fired** (`playFiredSound`, 2 variants) — `WON.onEnter`, the late
+  ("You're Fired") variant.
+- **On time** (`playOnTimeSound`, single clip) — `WON.onEnter`, the on-time
+  ("Now Get to Work!") variant, see §6.
 
 `audio/music.js` owns background music, one playlist per mode
 (`game_design.md` §5's `session.mode`), plus a shared `menu` playlist that
